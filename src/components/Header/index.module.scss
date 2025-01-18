@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 150px;
+    padding: 0 50px;
+    box-shadow: 0px 4px 8px #00000071;
+    font-family: 'Roboto';
+
+    .logo {
+        width: 150px;
+    }
+
+    .doc {
+        color: var(--color-primary);
+    }
+}
