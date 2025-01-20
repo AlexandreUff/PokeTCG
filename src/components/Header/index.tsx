@@ -4,7 +4,7 @@ import styles from './index.module.scss'
 export default function Header(){
     return (
         <header className={styles.header}>
-            <img className={styles.logo} src={logo} />
+            <img className={styles.logo} src={logo} alt='Logo Pokémon' />
             <p className={styles.doc} >Documentação</p>
         </header>
     )
