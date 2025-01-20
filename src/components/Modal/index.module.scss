@@ -1,0 +1,32 @@
+.modal-background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000033;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+}
+
+.modal-container {
+    background-color: white;
+    min-width: 512px;
+    min-height: 50%;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--color-secondary);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-fourth);
+    padding: 20px;
+    font-family: 'Kanit';
+    color: var(--color-secondary);
+
+}
