@@ -5,7 +5,7 @@
     height: 250px;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0px 0px 8px #00000071;
+    box-shadow: var(--box-shadow-mod-1);
     transition: .3s;
     box-sizing: border-box;
 

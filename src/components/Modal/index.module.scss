@@ -8,18 +8,19 @@
     background-color: #00000033;
     width: 100vw;
     height: 100vh;
+    padding: 16px;
     backdrop-filter: blur(4px);
     z-index: 1000;
 }
 
 .modal-container {
-    background-color: white;
-    min-width: 512px;
+    width: 512px;
     min-height: 50%;
     border-radius: 12px;
     overflow: hidden;
     background-color: var(--color-secondary);
     z-index: 1001;
+    box-shadow: var(--box-shadow-mod-1);
 }
 
 .modal-header {
@@ -55,5 +56,11 @@
     &:hover {
         cursor: pointer;
         background-color: #0000003f;
+    }
+}
+
+@media (max-width: 560px) {
+    .modal-container {
+        min-width: 0,914%;
     }
 }
