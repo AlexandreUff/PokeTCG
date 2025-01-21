@@ -7,8 +7,8 @@ export default function Modal(){
     const { toggleOpenModal } = useContext(ModalContext)
 
     return (
-        <div className={styles['modal-background']} onClick={() => [toggleOpenModal(), console.log('err')]}>
-            <div className={styles['modal-container']}>
+        <div className={styles['modal-background']} onClick={toggleOpenModal}>
+            <div className={styles['modal-container']} onClick={e => e.stopPropagation()}>
                 <header className={styles['modal-header']}>
                     Teste
                 </header>
