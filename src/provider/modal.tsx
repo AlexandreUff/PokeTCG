@@ -1,11 +1,12 @@
 import { ReactNode, createContext, useState } from "react";
+import Modal from "../components/Modal";
 
 interface IModalContext {
     isOpen: boolean;
     toggleOpenModal: () => void;
 }
 
-const ModalContext = createContext<IModalContext>({
+export const ModalContext = createContext<IModalContext>({
     isOpen: false,
     toggleOpenModal: () => {},
 })
@@ -13,7 +14,7 @@ const ModalContext = createContext<IModalContext>({
 const ModalProvider = ({
     children,
   }: Readonly<{ children: ReactNode }>) => {
-    const [open, setOpen] = useState<boolean>(false); // Estado do tema
+    const [open, setOpen] = useState<boolean>(false);
 
     const toggleOpenModal = () => {
         setOpen((prevOpen) => (!prevOpen));
@@ -21,6 +22,7 @@ const ModalProvider = ({
 
     return (
         <ModalContext.Provider value={{ isOpen: open, toggleOpenModal }}>
+            {open && (<Modal />)}
             {children}
         </ModalContext.Provider>
     );

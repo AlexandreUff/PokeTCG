@@ -2,13 +2,16 @@ import './App.scss'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Main from './components/Main'
+import ModalProvider from './provider/modal'
 
 function App() {
   return (
     <div className='app'>
-      <Header />
-      <Main />
-      <Footer />
+        <ModalProvider>
+            <Header />
+            <Main />
+            <Footer />
+        </ModalProvider>
     </div>
   )
 }

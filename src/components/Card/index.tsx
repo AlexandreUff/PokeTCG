@@ -1,12 +1,15 @@
 import styles from './index.module.scss'
 import { Picture } from '../Icons'
+import { useContext } from 'react'
+import { ModalContext } from '../../provider/modal'
 
 export default function Card(){
 
     const pokemonName = "Pikachu"
+    const { toggleOpenModal } = useContext(ModalContext)
 
     return (
-        <article className={styles.card}>
+        <article className={styles.card} onClick={toggleOpenModal}>
             <section title={pokemonName} className={styles['card-main']}>
                 <Picture className={styles['no-picture']} />
             </section>
