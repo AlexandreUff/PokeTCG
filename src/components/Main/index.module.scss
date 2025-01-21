@@ -11,6 +11,21 @@
     gap: 32px;
 }
 
+.tools-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 32px;
+    margin-bottom: 28px;
+}
+
+@media(max-width: 855px){
+    .tools-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
 @media(max-width: 595px){
     .card-content {
         justify-content: center;
