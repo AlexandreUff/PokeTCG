@@ -23,12 +23,37 @@
 }
 
 .modal-header {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--color-fourth);
     padding: 20px;
     font-family: 'Kanit';
+    font-size: large;
     color: var(--color-secondary);
 
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--color-primary);
+    border: none;
+    width: 32px;
+    padding: 4px;
+    border-radius: 50%;
+    transition: .3s;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #0000003f;
+    }
 }
