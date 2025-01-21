@@ -3,8 +3,9 @@ import { Picture } from '../Icons'
 import { useContext } from 'react'
 import { ModalContext } from '../../provider/modal'
 import { ICard, ITypes } from '../../types/card-types'
+import ModalCardContent from '../ModalCardContent'
 
-interface CardProps {
+export interface CardProps {
     data: ICard;
 }
 
@@ -24,7 +25,7 @@ export default function Card({data}: CardProps){
     }
 
     return (
-        <article className={styles.card} onClick={() => openModal("NOVO", <p>IRON</p>)}>
+        <article className={styles.card} onClick={() => openModal(data.name, <ModalCardContent data={data} />)}>
             <section title={data.name} className={styles['card-main']}>
                 {data.images ? <img src={data.images.small} className={styles['card-image']} /> : (
                     <Picture className={styles['no-picture']} />

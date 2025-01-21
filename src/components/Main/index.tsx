@@ -4,11 +4,12 @@ import Filter from '../Filter'
 import SearchBar from '../SearchBar'
 import styles from './index.module.scss'
 import { PokeAPIService } from '../../services/pokemonTCG-API'
+import { ICard } from '../../types/card-types'
 
 export default function Main(){
 
     /* Veja se o nome para este State está bom */
-    const [datas, setDatas] = useState<unknown>([])
+    const [datas, setDatas] = useState<ICard[]>([])
     const [searchTerm, setSearchTerm] = useState<string>("")
 
     async function requestPokemonData(term?: string){
