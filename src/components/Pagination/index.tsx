@@ -10,7 +10,7 @@ export default function Pagination(){
         const falseArray = []
 
         for (let i = 1; i <= totalPagination; i++) {
-            falseArray.push(<button title={`Ir à página ${i}`} className={styles.button}>{i}</button>)
+            falseArray.push(<button key={i} title={`Ir à página ${i}`} className={styles.button}>{i}</button>)
         }
 
         return falseArray

@@ -6,10 +6,10 @@ import { ModalContext } from '../../provider/modal'
 export default function Card(){
 
     const pokemonName = "Pikachu"
-    const { toggleOpenModal } = useContext(ModalContext)
+    const { openModal } = useContext(ModalContext)
 
     return (
-        <article className={styles.card} onClick={toggleOpenModal}>
+        <article className={styles.card} onClick={() => openModal("NOVO", <p>IRON</p>)}>
             <section title={pokemonName} className={styles['card-main']}>
                 <Picture className={styles['no-picture']} />
             </section>
