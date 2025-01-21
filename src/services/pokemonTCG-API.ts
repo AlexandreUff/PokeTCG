@@ -1,16 +1,20 @@
-//import { APIRequest } from "../types/poke-api-types";
+import { APIRequest } from "../types/poke-api-request-types";
 
 export class PokeAPIService {
   static baseURL = "https://api.pokemontcg.io/v2/cards"; // "/cards"
 
-  static async getAll(
-    filter: string = ""
-  ): Promise</* APIRequest */ unknown | undefined> {
+  static async getAll(filter: string = ""): Promise<APIRequest | undefined> {
     try {
       let response;
-      await fetch(`${this.baseURL}${filter ? "?" + filter : ""}`, {
-        method: "GET",
-      })
+      await fetch(
+        `${this.baseURL}${filter ? "?" + filter : "?pageSize=20&page=1"}`,
+        {
+          method: "GET",
+          headers: {
+            "X-Api-Key": "0dd35657-ace9-49d8-ab25-7b2d8e8c570d",
+          },
+        }
+      )
         .then((response) => {
           return response.json();
         })
