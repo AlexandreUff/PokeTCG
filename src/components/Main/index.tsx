@@ -9,29 +9,35 @@ export default function Main(){
 
     /* Veja se o nome para este State está bom */
     const [datas, setDatas] = useState<unknown>([])
+    const [searchTerm, setSearchTerm] = useState<string>("")
 
-    async function requestPokemonData(){
-        const { data } = await PokeAPIService.getAll();
-        console.log(data)
-        if(data) setDatas(data)
+    async function requestPokemonData(term?: string){
+        const result = await PokeAPIService.getAll(term);
+        // console.log(data)
+        if(result?.data) setDatas(result.data)
     }
 
     useEffect(()=>{
         requestPokemonData()
     },[])
 
+    useEffect(()=>{
+        console.log('Search', searchTerm);
+        requestPokemonData(searchTerm)
+    },[searchTerm])
+
     return (
         <main className={styles.main}>
             <section className={styles['tools-content']}>
-                <SearchBar />
+                <SearchBar getTerm={setSearchTerm} />
                 <Filter />
             </section>
             <section className={styles['card-content']}>
-                {datas.map(data => {
+                {datas ? datas.map(data => {
                     return (
                         <Card data={data} />
                     )
-                })}
+                }) : "Não há Pokempns a exibir"}
             </section>
         </main>
     )
