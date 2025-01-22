@@ -9,8 +9,6 @@ interface PaginationProps {
 
 export default function Pagination({ totalCount, pageSelected, setPageSelected }: PaginationProps){
 
-    // const [pageSelected, setPageSelected] = useState<number>(1);
-
     const totalPagination = totalCount && handlerPagination(totalCount);
 
     function handlerPagination(total: number){
@@ -50,9 +48,19 @@ export default function Pagination({ totalCount, pageSelected, setPageSelected }
     return (
         <section className={styles.pagination}>
                 {totalPagination ? <>
-                    <button className={`${styles.button} ${styles.next}`} onClick={() => handlerSwitchPage(false)}> <Previous className={styles.icon} /> {"Anterior"}</button>
-                    {renderPaginationButtons()} ... <button title={`Ir à página ${totalPagination}`} className={styles.button} onClick={() => pageSelected !== totalPagination && setPageSelected(totalPagination)}>{totalPagination}</button>
-                    <button className={`${styles.button} ${styles.previous}`} onClick={() => handlerSwitchPage(true)}>{"Próximo"} <Next className={styles.icon} /></button>
+                    <button
+                        className={`${styles.button} ${styles.next}`}
+                        onClick={() => handlerSwitchPage(false)}
+                    >
+                        <Previous className={styles.icon} /> {"Anterior"}
+                    </button>
+                    {renderPaginationButtons()} <span className={styles.ellipsis}>...</span> <button title={`Ir à página ${totalPagination}`} className={styles.button} onClick={() => pageSelected !== totalPagination && setPageSelected(totalPagination)}>{totalPagination}</button>
+                    <button
+                        className={`${styles.button} ${styles.previous}`}
+                        onClick={() => handlerSwitchPage(true)}
+                    >
+                        {"Próximo"} <Next className={styles.icon} />
+                    </button>
             </> : "Gerando Paginação..."}
         </section>
     )
