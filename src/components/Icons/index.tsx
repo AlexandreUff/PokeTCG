@@ -21,3 +21,7 @@ export const X = ({className} : IconProps) => {
 export const Search = ({className} : IconProps) => {
     return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className ?? ''}><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
 }
+
+export const FilterList = ({className} : IconProps) => {
+    return <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className ?? ''}><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+}

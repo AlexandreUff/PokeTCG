@@ -1,4 +1,20 @@
 .filter-content {
     border: 1px solid gray;
+    flex-direction: column;
     
+    button {
+        display: flex;
+        height: 40px;
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: none;
+        font-size: large;
+        background-color: var(--color-primary);
+        color: var(--color-fourth);
+        cursor: pointer;
+
+        &:hover {
+            opacity: .7;
+        }
+    }
 }
