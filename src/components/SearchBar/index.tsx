@@ -15,7 +15,7 @@ export default function SearchBar({ getTerm }:SearchBarProps){
     }
 
     function handleTerm(){
-        getTerm(searchTerm ? `q=name:${searchTerm} `: "");
+        getTerm(searchTerm ? `&q=name:${searchTerm} `: "");
     }
 
     return (

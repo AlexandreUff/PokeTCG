@@ -8,15 +8,12 @@ export class PokeAPIService {
 
     try {
       let response;
-      await fetch(
-        `${this.baseURL}${filter ? "?" + filter : "?pageSize=20&page=1"}`,
-        {
-          method: "GET",
-          headers: {
-            "X-Api-Key": API_KEY,
-          },
-        }
-      )
+      await fetch(`${this.baseURL}${`?pageSize=20&page=1${filter ?? ""}`}`, {
+        method: "GET",
+        headers: {
+          "X-Api-Key": API_KEY,
+        },
+      })
         .then((response) => {
           return response.json();
         })
