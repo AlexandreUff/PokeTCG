@@ -27,7 +27,7 @@ export default function Pagination({ totalCount }: PaginationProps){
 
         const pageSelectedIsBiggerThanFive = pageSelected > 5;
         const firstValueCount = pageSelectedIsBiggerThanFive ? pageSelected - 3 : 1;
-        const maxValueCount = pageSelectedIsBiggerThanFive ? pageSelected + 3 : 7
+        const maxValueCount = pageSelectedIsBiggerThanFive ? pageSelected + 3 : 7 // Evitar que nº de botões exceda
 
         for (let i = firstValueCount; i <= maxValueCount; i++) {
             falseArray.push(<button key={i} title={`Ir à página ${i}`} className={`${styles.button} ${pageSelected === i ? styles.selected : ""}`} onClick={() => pageSelected !== i && setPageSelected(i)}>{i}</button>);
@@ -50,7 +50,7 @@ export default function Pagination({ totalCount }: PaginationProps){
         <section className={styles.pagination}>
                 {totalPagination ? <>
                     <button className={`${styles.button} ${styles.next}`} onClick={() => handlerSwitchPage(false)}> <Previous className={styles.icon} /> {"Anterior"}</button>
-                    {renderPaginationButtons()} ... <button title={`Ir à página ${totalPagination}`} className={styles.button}>{totalPagination}</button>
+                    {renderPaginationButtons()} ... <button title={`Ir à página ${totalPagination}`} className={styles.button} onClick={() => pageSelected !== totalPagination && setPageSelected(totalPagination)}>{totalPagination}</button>
                     <button className={`${styles.button} ${styles.previous}`} onClick={() => handlerSwitchPage(true)}>{"Próximo"} <Next className={styles.icon} /></button>
             </> : "Gerando Paginação..."}
         </section>
