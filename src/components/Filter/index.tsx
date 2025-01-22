@@ -27,23 +27,20 @@ export default function Filter(){
         return result.data
     }
 
-    async function createFiltersStructures(){
-
-        const allFilters: FilterType[] = []
-
-        filtersNamesList.forEach(async filterName => {
+    async function createFiltersStructures(){       
+        const filterPromises = filtersNamesList.map(async filterName => {
             const filtersLabels = await getFilterLabelsByType(filterName);
             const filterType: FilterType = {
                 name: filterName,
                 fields: [... filtersLabels]
             }
 
-            console.log('filterType', filterType)
-
-            allFilters.push(filterType)
+            return filterType
         })
 
-        console.log('filtreiros', allFilters)
+        const allFilters: FilterType[] = await Promise.all(filterPromises);
+        // console.log('filtreiros', allFilters)
+        setFilter(allFilters);
     }
 
     useEffect(() => {
