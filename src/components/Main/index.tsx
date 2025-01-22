@@ -3,8 +3,8 @@ import Card from '../Card'
 import Filter from '../Filter'
 import SearchBar from '../SearchBar'
 import styles from './index.module.scss'
-import { PokeAPIService } from '../../services/pokemonTCG-API'
 import { ICard } from '../../types/card-types'
+import { CardService } from '../../services/card-service'
 
 export default function Main(){
 
@@ -13,7 +13,7 @@ export default function Main(){
     const [searchTerm, setSearchTerm] = useState<string>("")
 
     async function requestPokemonData(term?: string){
-        const result = await PokeAPIService.getAll(term);
+        const result = await CardService.getAll(term);
         // console.log(data)
         if(result?.data) setDatas(result.data)
     }
