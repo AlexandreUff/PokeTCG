@@ -25,8 +25,8 @@ export default function Pagination({ totalCount, pageSelected, setPageSelected }
         const falseArray = [];
 
         const pageSelectedIsBiggerThanFive = pageSelected > 5;
-        const firstValueCount = pageSelectedIsBiggerThanFive ? pageSelected - 3 : 1;
-        const maxValueCount = pageSelectedIsBiggerThanFive ? pageSelected + 3 : 7 // Evitar que nº de botões exceda
+        const firstValueCount = pageSelectedIsBiggerThanFive ? pageSelected - 4 : 1;
+        const maxValueCount = pageSelectedIsBiggerThanFive ? pageSelected + 2 : 7 // Evitar que nº de botões exceda
 
         for (let i = firstValueCount; i <= maxValueCount; i++) {
             falseArray.push(<button key={i} title={`Ir à página ${i}`} className={`${styles.button} ${pageSelected === i ? styles.selected : ""}`} onClick={() => pageSelected !== i && setPageSelected(i)}>{i}</button>);
