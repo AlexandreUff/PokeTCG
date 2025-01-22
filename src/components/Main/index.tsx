@@ -5,17 +5,20 @@ import SearchBar from '../SearchBar'
 import styles from './index.module.scss'
 import { ICard } from '../../types/card-types'
 import { CardService } from '../../services/card-service'
+import Pagination from '../Pagination'
 
 export default function Main(){
 
     /* Veja se o nome para este State está bom */
     const [datas, setDatas] = useState<ICard[]>([])
+    const [totalCount, setTotalCount] = useState<number | undefined>()
     const [searchTerm, setSearchTerm] = useState<string>("")
 
     async function requestPokemonData(term?: string){
         const result = await CardService.getAll(term);
         // console.log(data)
         if(result?.data) setDatas(result.data)
+        if(result?.totalCount) setTotalCount(result.totalCount)
     }
 
     useEffect(()=>{
@@ -40,6 +43,7 @@ export default function Main(){
                     )
                 }) : "Não há Pokempns a exibir"}
             </section>
+            <Pagination totalCount={totalCount} />
         </main>
     )
 }

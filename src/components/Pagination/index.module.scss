@@ -1,8 +1,14 @@
 .pagination {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+
     display: flex;
     justify-content: center;
     padding: 4px;
     color: var(--color-primary);
+    background-color: red;
+    width: 100%;
 }
 
 .button {
@@ -29,6 +35,10 @@
     &:hover {
         background-color: #00000048;
         cursor: pointer;
+    }
+
+    &.selected {
+        border: 1px solid var(--color-primary);
     }
 }
 
