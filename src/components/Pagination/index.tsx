@@ -1,14 +1,15 @@
-import { useState } from 'react';
 import { Next, Previous } from '../Icons'
 import styles from './index.module.scss'
 
 interface PaginationProps {
-    totalCount?: number
+    totalCount?: number,
+    pageSelected: number,
+    setPageSelected: (nextPage: number) => void,
 }
 
-export default function Pagination({ totalCount }: PaginationProps){
+export default function Pagination({ totalCount, pageSelected, setPageSelected }: PaginationProps){
 
-    const [pageSelected, setPageSelected] = useState<number>(1);
+    // const [pageSelected, setPageSelected] = useState<number>(1);
 
     const totalPagination = totalCount && handlerPagination(totalCount);
 
@@ -39,12 +40,12 @@ export default function Pagination({ totalCount }: PaginationProps){
     function handlerSwitchPage(isNext: boolean) {
         if(totalPagination){
             if(isNext){
-                setPageSelected(prevPage => (prevPage < totalPagination) ? prevPage + 1 : prevPage)
+                setPageSelected(pageSelected < totalPagination ? pageSelected + 1 : pageSelected)
                 return
             }
-            setPageSelected(prevPage => (prevPage > 1) ? prevPage - 1 : prevPage)
+            setPageSelected(pageSelected > 1 ? pageSelected - 1 : pageSelected)
         }
-    }
+    };
 
     return (
         <section className={styles.pagination}>

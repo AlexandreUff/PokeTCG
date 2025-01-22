@@ -12,11 +12,11 @@ export default function Main(){
     /* Veja se o nome para este State está bom */
     const [datas, setDatas] = useState<ICard[]>([])
     const [totalCount, setTotalCount] = useState<number | undefined>()
+    const [pageSelected, setPageSelected] = useState<number>(1);
     const [searchTerm, setSearchTerm] = useState<string>("")
 
-    async function requestPokemonData(term?: string){
-        const result = await CardService.getAll(term);
-        // console.log(data)
+    async function requestPokemonData(term?: string, page?:number){
+        const result = await CardService.getAll(term, page);
         if(result?.data) setDatas(result.data)
         if(result?.totalCount) setTotalCount(result.totalCount)
     }
@@ -29,6 +29,11 @@ export default function Main(){
         console.log('Search', searchTerm);
         requestPokemonData(searchTerm)
     },[searchTerm])
+
+    useEffect(()=>{
+        console.log('Pajena', pageSelected);
+        requestPokemonData("", pageSelected)
+    },[pageSelected])
 
     return (
         <main className={styles.main}>
@@ -43,7 +48,7 @@ export default function Main(){
                     )
                 }) : "Não há Pokempns a exibir"}
             </section>
-            <Pagination totalCount={totalCount} />
+            <Pagination totalCount={totalCount} pageSelected={pageSelected} setPageSelected={setPageSelected} />
         </main>
     )
 }
