@@ -27,7 +27,7 @@ export default function Card({data}: CardProps){
     return (
         <article className={styles.card} onClick={() => openModal(data.name, <ModalCardContent data={data} />)}>
             <section title={data.name} className={styles['card-main']}>
-                {data.images ? <img src={data.images.small} className={styles['card-image']} /> : (
+                {data.images ? <img src={data.images.small} className={styles['card-image']} alt={"Image of " + data.name + " card"} /> : (
                     <Picture className={styles['no-picture']} />
                 )}
             </section>
