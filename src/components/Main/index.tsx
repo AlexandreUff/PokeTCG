@@ -27,13 +27,14 @@ export default function Main(){
 
     useEffect(()=>{
         console.log('Search', searchTerm);
-        requestPokemonData(searchTerm)
+        setPageSelected(1);
+        requestPokemonData(searchTerm, 1)
     },[searchTerm])
 
     useEffect(()=>{
         console.log('Pajena', pageSelected);
-        requestPokemonData("", pageSelected)
-    },[pageSelected])
+        requestPokemonData(searchTerm, pageSelected)
+    },[pageSelected, searchTerm])
 
     return (
         <main className={styles.main}>
