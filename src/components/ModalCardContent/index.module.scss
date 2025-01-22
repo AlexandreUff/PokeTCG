@@ -3,12 +3,57 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 8px;
-    width: 100%;
+    padding: 16px;
+    width: 90%;
     height: 100%;
+    font-family: 'Kanit';
+    color: var(--color-fourth);
 }
 
 .image {
     margin: 12px;
     width: 200px;
+}
+
+.attack-content {
+    margin-bottom: 16px;
+    width: 100%;
+    padding-left: 32px;
+}
+
+.attack-info-content {
+    padding-top: 4px;
+    margin-top: 8px;
+    border-top: 1px solid #00000031;
+}
+
+.attack-name {
+    font-weight: 600;
+    font-size: large;
+}
+
+.attack-damage{
+    font-size: small;
+}
+
+.attack-description {
+    font-size: small;
+    font-style: italic;
+}
+
+.pokemon-description {
+    margin: 16px 0;
+}
+.weakness-content {
+    display: flex;
+    margin-top: 8px;
+    
+    .weakness-pill{
+        border: 1px solid var(--color-fourth);
+        border-radius: 32px;
+        color: var(--color-second);
+        padding: 4px;
+        font-size: smaller;
+    }
+
 }
