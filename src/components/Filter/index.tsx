@@ -18,9 +18,9 @@ export default function Filter(){
 
     const { openModal } = useContext(ModalContext);
 
-    const [filter, setFilter] = useState<FilterType[]>([])
+    const [filters, setFilters] = useState<FilterType[]>([]);
 
-    const filtersNamesList = [/* 'sets',  */'rarities', 'types', 'subtypes', 'supertypes']
+    const filtersNamesList = [/* 'sets',  */'rarities', 'types', 'subtypes', 'supertypes'];
 
     async function getFilterLabelsByType(filterName: string){
         const result = await FiltersService.get(filterName)
@@ -39,9 +39,53 @@ export default function Filter(){
         })
 
         const allFilters: FilterType[] = await Promise.all(filterPromises);
-        // console.log('filtreiros', allFilters)
-        setFilter(allFilters);
+        setFilters(allFilters);
     }
+
+    function filtersPanel(){
+        return (
+                    <div>
+                        {filtersNamesList.map(filter => {
+                            return (
+                                <section>
+                                    <p>
+                                        {filter}
+                                    </p>
+                                    <div>
+                                        <p>{"[]"} | Nome </p>
+                                    </div>
+                                </section>
+                            )
+                        })}
+                    </div>
+                )
+    }
+
+    // function filtersPanel(){
+
+    //     console.log('filters', filters)
+
+    //     return (
+    //         <div>
+    //             {filters.map(filter => {
+    //                 return (
+    //                     <section>
+    //                         <p>
+    //                             {filter.name}
+    //                         </p>
+    //                         <div>
+    //                             {filter.fields.map(field => {
+    //                                 return (
+    //                                     <p>{field.label} | {field.selected}</p>
+    //                                 )
+    //                             })}
+    //                         </div>
+    //                     </section>
+    //                 )
+    //             })}
+    //         </div>
+    //     )
+    // }
 
     useEffect(() => {
         createFiltersStructures()
@@ -49,7 +93,7 @@ export default function Filter(){
 
     return (
         <div className={styles['filter-content']}>
-            <button onClick={() => openModal('Filtros', <b>RÁ</b>)}><FilterList /> Filtros</button>
+            <button onClick={() => openModal('Filtros', filtersPanel())}><FilterList /> Filtros</button>
             <section className={styles['filters-selected']}>
                 Teste
             </section>
