@@ -19,6 +19,7 @@ export default function Filter(){
     const { openModal } = useContext(ModalContext);
 
     const [filters, setFilters] = useState<FilterType[]>([]);
+    console.log('filters', filters) // Só pro build não reclamar
 
     const filtersNamesList = [/* 'sets',  */'rarities', 'types', 'subtypes', 'supertypes'];
 
