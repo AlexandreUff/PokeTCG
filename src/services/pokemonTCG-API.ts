@@ -4,6 +4,8 @@ export class PokeAPIService {
   static baseURL = "https://api.pokemontcg.io/v2/cards"; // "/cards"
 
   static async getAll(filter: string = ""): Promise<APIRequest | undefined> {
+    const API_KEY = import.meta.env.VITE_X_API;
+
     try {
       let response;
       await fetch(
@@ -11,7 +13,7 @@ export class PokeAPIService {
         {
           method: "GET",
           headers: {
-            "X-Api-Key": "0dd35657-ace9-49d8-ab25-7b2d8e8c570d",
+            "X-Api-Key": API_KEY,
           },
         }
       )
