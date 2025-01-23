@@ -5,7 +5,7 @@
     flex-direction: column;
     padding: 16px;
     width: 90%;
-    height: 100%;
+    height: 602px;
     font-family: 'Kanit';
     color: var(--color-fourth);
 }
@@ -56,4 +56,19 @@
         font-size: smaller;
     }
 
+}
+
+@media (max-height: 736px) {
+    .content {
+        padding-top: 188px;
+        height: 40vh;
+        overflow-y: scroll;
+    }
+}
+
+@media (max-height: 516px) {
+    .content {
+        padding-top: 228px;
+        height: 20vh;
+    }
 }

@@ -20,7 +20,9 @@ export default function Modal({content}: ModalProps){
                     {title}
                     <button className={styles['modal-close-button']} onClick={closeModal} title="Fechar"><X/></button>
                 </header>
-                {body}
+                <main className={styles['modal-main']}>
+                    {body}
+                </main>
             </div>
         </div>
     )

@@ -64,3 +64,9 @@
         min-width: 0,914%;
     }
 }
+
+@media (max-height: 736px) {
+    .modal-main {
+        height: 100%;
+    }
+}

@@ -23,8 +23,7 @@ export default function ModalCardContent({data}: CardProps){
                     return (
                         <div className={styles["weakness-pill"]}>
                             <p>
-                            {weakness.type} | {weakness.value}
-
+                                {weakness.type} | {weakness.value}
                             </p>
                         </div>
                     )
