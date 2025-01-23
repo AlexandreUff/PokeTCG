@@ -4,6 +4,7 @@ import styles from "./index.module.scss"
 import { ModalContext } from "../../provider/modal"
 import { FiltersService } from "../../services/filters-service"
 import { filtersNamesList } from "../../utils/filters-list"
+import { URLParamsFormat } from "../../utils/url-params-format"
 
 interface FilterFieldsStructure {
     label: string,
@@ -65,7 +66,7 @@ export default function Filter(){
         let filterTerm = ""
         filters.forEach(filter => {
             return filter.fields.forEach(fields => {
-                if(fields.selected) filterTerm+=`q=${filter.name}:${fields.label}&`
+                if(fields.selected) filterTerm+=`q=${filter.name}:${URLParamsFormat(fields.label).replace("=","")}&`
             })
         })
 
