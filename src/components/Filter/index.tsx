@@ -3,6 +3,7 @@ import { FilterList } from "../Icons"
 import styles from "./index.module.scss"
 import { ModalContext } from "../../provider/modal"
 import { FiltersService } from "../../services/filters-service"
+import { filtersNamesList } from "../../utils/filters-list"
 
 interface FilterFieldsStructure {
     label: string,
@@ -20,8 +21,6 @@ export default function Filter(){
 
     const [filters, setFilters] = useState<FilterType[]>([]);
     console.log('filters', filters) // Só pro build não reclamar
-
-    const filtersNamesList = [/* 'sets',  */'rarities', 'types', 'subtypes', 'supertypes'];
 
     async function getFilterLabelsByType(filterName: string){
         const result = await FiltersService.get(filterName)
