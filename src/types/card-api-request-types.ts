@@ -1,8 +1,8 @@
 import { ICard } from "./card-types";
 
-export interface APIRequest {
+export interface CardAPIRequest {
   count: number;
-  data: ICard[] /* Alterar esta tipagem depois */;
+  data: ICard[];
   page: number;
   pageSize: number;
   totalCount: number;

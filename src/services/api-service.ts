@@ -1,9 +1,9 @@
-import { APIRequest } from "../types/poke-api-request-types";
+import { CardAPIRequest } from "../types/card-api-request-types";
 
 export class APIService {
   static baseURL = "https://api.pokemontcg.io/v2";
 
-  static async get(params: string = ""): Promise<APIRequest | undefined> {
+  static async get(params: string = ""): Promise<CardAPIRequest | undefined> {
     const API_KEY = import.meta.env.VITE_X_API;
 
     try {
