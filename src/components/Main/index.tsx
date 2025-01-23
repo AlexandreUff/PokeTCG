@@ -51,9 +51,9 @@ export default function Main(){
                 <Filter />
             </section>
             <section className={styles['card-content']}>
-                {!loading ? datas.map(data => {
+                {!loading ? datas.map((data, i) => {
                     return (
-                        <Card data={data} />
+                        <Card key={i+1} data={data} />
                     )
                 }) :  <Loading />}
             </section>

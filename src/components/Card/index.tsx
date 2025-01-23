@@ -15,6 +15,8 @@ export default function Card({data}: CardProps){
 
     console.log('Chegaram aqui', data)
 
+    const noDefinedAttribute = <span className={styles['no-defined']}>No defined</span>;
+
     function listTypesAsString(types: ITypes[]): string{
         let text = ""
         types.forEach((eachType: string, i: number) => {
@@ -34,11 +36,11 @@ export default function Card({data}: CardProps){
             <section className={styles['card-info']}>
                 <div className={styles['title-area']}>
                     <h2 className={styles['main-title']}>{data.name}</h2>
-                    <p>Tipo: {listTypesAsString(data.types)}</p>
+                    <p>Tipo: {data?.types ? listTypesAsString(data.types) : noDefinedAttribute}</p>
                 </div>
                 <div className={styles.frequency}>
                     <PokeBall className={styles['type-of-frequency']} />
-                    <p>{data.rarity}</p>
+                    <p>{data?.rarity ? data.rarity : noDefinedAttribute}</p>
                 </div>
             </section>
         </article>
