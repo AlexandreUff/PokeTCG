@@ -62,7 +62,9 @@ export default function Pagination({ totalCount, pageSelected, setPageSelected }
                     >
                         <Previous className={styles.icon} /> {"Anterior"}
                     </button>
-                    {renderPaginationButtons(totalPagination)}
+                    <div className={styles['button-select-page-content']}>
+                        {renderPaginationButtons(totalPagination)}
+                    </div>
                     <button
                         className={`${styles.button} ${styles.previous}`}
                         onClick={() => handlerSwitchPage(true)}
