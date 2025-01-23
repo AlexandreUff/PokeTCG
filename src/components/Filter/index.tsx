@@ -16,7 +16,11 @@ interface FilterType {
  fields: FilterFieldsStructure[]
 }
 
-export default function Filter(){
+interface SearchBarProps {
+    getTerm: (term: string) => void;
+}
+
+export default function Filter({ getTerm }:SearchBarProps){
 
     const { openModal, closeModal } = useContext(ModalContext);
 
@@ -66,11 +70,13 @@ export default function Filter(){
         let filterTerm = ""
         filters.forEach(filter => {
             return filter.fields.forEach(fields => {
-                if(fields.selected) filterTerm+=`q=${filter.name}:${URLParamsFormat(fields.label).replace("=","")}&`
+                if(fields.selected) filterTerm+=`&q=${filter.name}:${URLParamsFormat(fields.label).replace("=","")}`
             })
         })
 
         console.log('filterTerm', filterTerm);
+        getTerm(filterTerm)
+        closeModal()
     };
 
     function showFiltersAsPills(){

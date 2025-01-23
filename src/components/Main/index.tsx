@@ -48,7 +48,7 @@ export default function Main(){
         <main className={styles.main}>
             <section className={styles['tools-content']}>
                 <SearchBar getTerm={setSearchTerm} />
-                <Filter />
+                <Filter getTerm={setSearchTerm} />
             </section>
             <section className={styles['card-content']}>
                 {!loading ? datas.map((data, i) => {
