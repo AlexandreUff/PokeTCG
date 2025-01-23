@@ -20,19 +20,27 @@ export default function Pagination({ totalCount, pageSelected, setPageSelected }
         return totalRoundedDown
     }
 
-    function renderPaginationButtons (){
+    function renderPaginationButtons (maxPages: number){
 
-        const falseArray = [];
+        const paginationButtons = [];
 
         const pageSelectedIsBiggerThanFive = pageSelected > 5;
         const firstValueCount = pageSelectedIsBiggerThanFive ? pageSelected - 4 : 1;
-        const maxValueCount = pageSelectedIsBiggerThanFive ? pageSelected + 2 : 7 // Evitar que nº de botões exceda
+        const pageSelectedIsBiggerThanAddedTwo = pageSelected + 2 >= maxPages ? maxPages : pageSelected + 2;
+        const maxValueCount = pageSelectedIsBiggerThanFive ? pageSelectedIsBiggerThanAddedTwo : 7
 
         for (let i = firstValueCount; i <= maxValueCount; i++) {
-            falseArray.push(<button key={i} title={`Ir à página ${i}`} className={`${styles.button} ${pageSelected === i ? styles.selected : ""}`} onClick={() => pageSelected !== i && setPageSelected(i)}>{i}</button>);
+            paginationButtons.push(<button key={i} title={`Ir à página ${i}`} className={`${styles.button} ${pageSelected === i ? styles.selected : ""}`} onClick={() => pageSelected !== i && setPageSelected(i)}>{i}</button>);
+
+            if(pageSelectedIsBiggerThanAddedTwo !== maxPages && i === maxValueCount){
+                paginationButtons.push(
+                    <>
+                        <span className={styles.ellipsis}>...</span> <button title={`Ir à página ${totalPagination}`} className={styles.button} onClick={() => pageSelected !== totalPagination && setPageSelected(maxPages)}>{totalPagination}</button>
+                    </>)
+            }
         };
 
-        return falseArray;
+        return paginationButtons;
     };
 
     function handlerSwitchPage(isNext: boolean) {
@@ -54,7 +62,7 @@ export default function Pagination({ totalCount, pageSelected, setPageSelected }
                     >
                         <Previous className={styles.icon} /> {"Anterior"}
                     </button>
-                    {renderPaginationButtons()} <span className={styles.ellipsis}>...</span> <button title={`Ir à página ${totalPagination}`} className={styles.button} onClick={() => pageSelected !== totalPagination && setPageSelected(totalPagination)}>{totalPagination}</button>
+                    {renderPaginationButtons(totalPagination)}
                     <button
                         className={`${styles.button} ${styles.previous}`}
                         onClick={() => handlerSwitchPage(true)}
