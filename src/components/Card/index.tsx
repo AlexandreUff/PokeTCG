@@ -1,5 +1,5 @@
 import styles from './index.module.scss'
-import { Picture } from '../Icons'
+import { Picture, PokeBall } from '../Icons'
 import { useContext } from 'react'
 import { ModalContext } from '../../provider/modal'
 import { ICard, ITypes } from '../../types/card-types'
@@ -37,7 +37,7 @@ export default function Card({data}: CardProps){
                     <p>Tipo: {listTypesAsString(data.types)}</p>
                 </div>
                 <div className={styles.frequency}>
-                    <Picture className={styles['type-of-frequency']} />
+                    <PokeBall className={styles['type-of-frequency']} />
                     <p>{data.rarity}</p>
                 </div>
             </section>
