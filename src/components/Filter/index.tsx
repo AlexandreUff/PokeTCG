@@ -25,7 +25,7 @@ export default function Filter(){
 
     async function getFilterLabelsByType(filterName: string){
         const result = await FiltersService.get(filterName)
-        return result.data
+        return result?.data ? result.data : []
     }
 
     async function createFiltersStructures(){       
@@ -33,13 +33,19 @@ export default function Filter(){
             const filtersLabels = await getFilterLabelsByType(filterName);
             const filterType: FilterType = {
                 name: filterName,
-                fields: [... filtersLabels]
+                fields: filtersLabels.map(label => {
+                    return {
+                        label: label,
+                        selected: false
+                    }
+                })
             }
 
             return filterType
         })
-
+        
         const allFilters: FilterType[] = await Promise.all(filterPromises);
+
         setFilters(allFilters);
     }
 
@@ -61,32 +67,6 @@ export default function Filter(){
                     </div>
                 )
     }
-
-    // function filtersPanel(){
-
-    //     console.log('filters', filters)
-
-    //     return (
-    //         <div>
-    //             {filters.map(filter => {
-    //                 return (
-    //                     <section>
-    //                         <p>
-    //                             {filter.name}
-    //                         </p>
-    //                         <div>
-    //                             {filter.fields.map(field => {
-    //                                 return (
-    //                                     <p>{field.label} | {field.selected}</p>
-    //                                 )
-    //                             })}
-    //                         </div>
-    //                     </section>
-    //                 )
-    //             })}
-    //         </div>
-    //     )
-    // }
 
     useEffect(() => {
         createFiltersStructures()

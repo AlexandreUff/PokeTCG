@@ -1,10 +1,11 @@
+import { IFilter } from "../types/filter-types";
 import { APIService } from "./api-service";
 
 export class FiltersService {
-  static async get(filterName: string): Promise<any> {
-    //unkown provisório
+  static async get(filterName: string): Promise<IFilter | undefined> {
     const result = await APIService.get("/" + filterName);
 
-    return result;
+    if (result) return result;
+    return;
   }
 }
