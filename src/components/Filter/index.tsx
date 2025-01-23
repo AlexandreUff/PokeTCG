@@ -17,7 +17,7 @@ interface FilterType {
 
 export default function Filter(){
 
-    const { openModal } = useContext(ModalContext);
+    const { openModal, closeModal } = useContext(ModalContext);
 
     const [filters, setFilters] = useState<FilterType[]>([]);
 
@@ -61,6 +61,33 @@ export default function Filter(){
         };
     }
 
+    function closeAndHandlerFilterTerms() {
+        let filterTerm = ""
+        filters.forEach(filter => {
+            return filter.fields.forEach(fields => {
+                if(fields.selected) filterTerm+=`q=${filter.name}:${fields.label}&`
+            })
+        })
+
+        console.log('filterTerm', filterTerm);
+    };
+
+    function showFiltersAsPills(){
+        const selectedFilters = filters.map(filtro => ({
+            name: filtro.name,
+            fields: filtro.fields.filter(field => field.selected)
+        })).filter(filtro => filtro.fields.length > 0);
+
+        console.log('fil',selectedFilters)
+
+        return selectedFilters.map(selected => {
+            return selected.fields.map(fields => {
+                return <div className={styles['filter-pills']}>{selected.name} : {fields.label}</div>
+            })
+        })
+    };
+
+
     function filtersPanel(){
         return (
                     <div className={styles['filter-panel']}>
@@ -83,6 +110,7 @@ export default function Filter(){
                                 </section>
                             )
                         })}
+                        <button onClick={closeAndHandlerFilterTerms}>Close Modal</button>
                     </div>
                 )
     }
@@ -95,7 +123,7 @@ export default function Filter(){
         <div className={styles['filter-content']}>
             <button onClick={() => openModal('Filtros', filtersPanel())}><FilterList /> Filtros</button>
             <section className={styles['filters-selected']}>
-                Teste
+                {showFiltersAsPills()}
             </section>
         </div>
     )
