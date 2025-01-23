@@ -5,6 +5,7 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 8px;
     color: var(--color-primary);
     background-color: var(--color-third);
@@ -25,12 +26,14 @@
         display: flex;
         align-items: center;
         margin-right: 16px;
+        height: 40px;
     }
 
     &.previous{
         display: flex;
         align-items: center;
         margin-left: 16px;
+        height: 40px;
     }
 
     &:hover {
