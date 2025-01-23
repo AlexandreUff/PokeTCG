@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { FilterList } from "../Icons"
+import { Done, FilterList } from "../Icons"
 import styles from "./index.module.scss"
 import { ModalContext } from "../../provider/modal"
 import { FiltersService } from "../../services/filters-service"
@@ -117,7 +117,7 @@ export default function Filter({ getTerm }:SearchBarProps){
                                 </section>
                             )
                         })}
-                        <button onClick={closeAndHandlerFilterTerms}>Close Modal</button>
+                        <button className={styles['filter-button']} onClick={closeAndHandlerFilterTerms}> <Done /> Concluído</button>
                     </div>
                 )
     }
@@ -128,7 +128,7 @@ export default function Filter({ getTerm }:SearchBarProps){
 
     return (
         <div className={styles['filter-content']}>
-            <button onClick={() => openModal('Filtros', filtersPanel())}><FilterList /> Filtros</button>
+            <button className={styles['filter-button']} onClick={() => openModal('Filtros', filtersPanel())}><FilterList /> Filtros</button>
             <section className={styles['filters-selected']}>
                 {showFiltersAsPills()}
             </section>
