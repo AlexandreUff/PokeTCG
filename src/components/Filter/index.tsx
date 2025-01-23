@@ -88,8 +88,8 @@ export default function Filter({ getTerm }:SearchBarProps){
         console.log('fil',selectedFilters)
 
         return selectedFilters.map(selected => {
-            return selected.fields.map(fields => {
-                return <div className={styles['filter-pills']}>{selected.name} : {fields.label}</div>
+            return selected.fields.map((fields, i) => {
+                return <div key={i + 1} className={styles['filter-pills']}>{selected.name} : {fields.label}</div>
             })
         })
     };
