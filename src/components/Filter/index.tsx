@@ -20,7 +20,6 @@ export default function Filter(){
     const { openModal } = useContext(ModalContext);
 
     const [filters, setFilters] = useState<FilterType[]>([]);
-    console.log('filters', filters) // Só pro build não reclamar
 
     async function getFilterLabelsByType(filterName: string){
         const result = await FiltersService.get(filterName)
@@ -48,6 +47,20 @@ export default function Filter(){
         setFilters(allFilters);
     }
 
+    function handlerFilter(filterName: string, fieldId: number){
+        const filterSelected = filters.find(filter => filter.name === filterName);
+
+        if(filterSelected) {
+            filterSelected.fields[fieldId].selected = !filterSelected.fields[fieldId].selected;
+        
+            const filterSelectedIndex = filters.findIndex(filter => filter.name === filterName);
+    
+            const newFilters = filters;
+            newFilters[filterSelectedIndex] = filterSelected
+            setFilters([...newFilters])
+        };
+    }
+
     function filtersPanel(){
         return (
                     <div className={styles['filter-panel']}>
@@ -58,10 +71,12 @@ export default function Filter(){
                                         {filter.name}
                                     </h5>
                                     <div className={styles['labels-content']}>
-                                        {filter.fields.map(field => {
+                                        {filter.fields.map((field, i) => {
                                             return (
                                                 <div className={styles['labels-item']}>
-                                                    <input type="checkbox" checked={field.selected } /> {field.label}
+                                                    <label>
+                                                        <input type="checkbox" checked={field.selected} onClick={() => handlerFilter(filter.name, i)} /> {field.label}
+                                                    </label>
                                                 </div>)
                                         })}
                                     </div>
