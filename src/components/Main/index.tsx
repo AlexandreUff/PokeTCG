@@ -10,7 +10,6 @@ import Loading from '../Loading'
 
 export default function Main(){
 
-    /* Veja se o nome para este State está bom */
     const [datas, setDatas] = useState<ICard[]>([])
     const [totalCount, setTotalCount] = useState<number | undefined>()
     const [pageSelected, setPageSelected] = useState<number>(1);
@@ -32,14 +31,12 @@ export default function Main(){
     },[])
 
     useEffect(()=>{
-        console.log('Search', searchTerm);
         setLoading(true);
         setPageSelected(1);
         requestPokemonData(searchTerm, 1)
     },[searchTerm])
 
     useEffect(()=>{
-        console.log('Pajena', pageSelected);
         setLoading(true);
         requestPokemonData(searchTerm, pageSelected)
     },[pageSelected, searchTerm])

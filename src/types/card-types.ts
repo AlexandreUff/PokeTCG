@@ -1,79 +1,8 @@
-/* interface ISetImage {
-    logo: string;
-    symbol: string;
-}
-
-interface ISet {
-    id: string;
-    images: ISetImage;
-    legalities: ILegality;
-    name:  string;
-    printedTotal: number;
-    ptcgoCode: string;
-    releaseDate: string;
-    series:  string;
-    total: number;
-    updatedAt: string;
-}
-
-interface IWeakness {
-    type: string;
-    value: string;
-}
-
-interface IResistance {
-    type: string;
-    value: string;
-}
-
-interface IAttack {
-    cost: string[];
-    name: string;
-    text: string;
-    damage: string;
-    convertedEnergyCost: string;
-}
-
-interface IAbility {
-    name: string;
-    text: string;
-    type: string;
-}
-
-export interface CardTypes {
-    id: string;
-  name: string;
-  supertype: string;
-  subtypes: string[];
-  hp?: string;
-  types?: string[];
-  evolesFrom?: string;
-  evolvesTo?: string[];
-  rules?: string[];
-  ancientTrait?: IAncientTrait;
-  abilities?: IAbility[];
-  attacks?: IAttack[];
-  weaknesses?: IWeakness[];
-  resistances?: IResistance[];
-  retreatCost?: string[];
-  convertedRetreatCost?: number;
-  set: ISet;
-  number: string;
-  artist?: string;
-  rarity: string;
-  flavorText?: string;
-  nationalPokedexNumbers?: number[];
-  legalities: ILegality;
-  images: ICardImage;
-  tcgplayer?: ITCGPlayer;
-  cardmarket?: ICardmarket;
-} */
-
 interface Attack {
   name: string;
   cost: string[];
   convertedEnergyCost: number;
-  damage: string; // Pode ser uma string vazia ou um número
+  damage: string;
   text: string;
 }
 

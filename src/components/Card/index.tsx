@@ -13,8 +13,6 @@ export default function Card({data}: CardProps){
 
     const { openModal } = useContext(ModalContext)
 
-    console.log('Chegaram aqui', data)
-
     const noDefinedAttribute = <span className={styles['no-defined']}>No defined</span>;
 
     function listTypesAsString(types: ITypes[]): string{

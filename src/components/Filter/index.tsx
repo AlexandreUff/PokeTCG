@@ -73,8 +73,6 @@ export default function Filter({ getTerm }:SearchBarProps){
                 if(fields.selected) filterTerm+=`&q=${filter.name}:${URLParamsFormat(fields.label).replace("=","")}`
             })
         })
-
-        console.log('filterTerm', filterTerm);
         getTerm(filterTerm)
         closeModal()
     };
@@ -84,8 +82,6 @@ export default function Filter({ getTerm }:SearchBarProps){
             name: filtro.name,
             fields: filtro.fields.filter(field => field.selected)
         })).filter(filtro => filtro.fields.length > 0);
-
-        console.log('fil',selectedFilters)
 
         return selectedFilters.map(selected => {
             return selected.fields.map((fields, i) => {
