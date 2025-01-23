@@ -50,15 +50,20 @@ export default function Filter(){
 
     function filtersPanel(){
         return (
-                    <div>
-                        {filtersNamesList.map(filter => {
+                    <div className={styles['filter-panel']}>
+                        {filters.map(filter => {
                             return (
                                 <section>
-                                    <p>
-                                        {filter}
-                                    </p>
-                                    <div>
-                                        <p>{"[]"} | Nome </p>
+                                    <h5>
+                                        {filter.name}
+                                    </h5>
+                                    <div className={styles['labels-content']}>
+                                        {filter.fields.map(field => {
+                                            return (
+                                                <div className={styles['labels-item']}>
+                                                    <input type="checkbox" checked={field.selected } /> {field.label}
+                                                </div>)
+                                        })}
                                     </div>
                                 </section>
                             )

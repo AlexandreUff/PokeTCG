@@ -2,6 +2,7 @@
     border: 1px solid gray;
     flex-direction: column;
     
+    
     button {
         display: flex;
         height: 40px;
@@ -15,6 +16,37 @@
 
         &:hover {
             opacity: .7;
+        }
+    }
+}
+
+.filter-panel {
+    padding: 8px;
+    overflow-y: scroll;
+    max-height: 80vh;
+    color: var(--color-fourth);
+
+    h5 {
+        text-transform: capitalize;
+        font-size: 16px;
+    }
+
+    section {
+
+        margin-bottom: 28px;
+
+        .labels-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 8px;
+
+            .labels-item {
+                display: flex;
+                align-items: center;
+                max-width: 140px;
+                margin: 0px 4px;
+                gap: 4px;
+            }
         }
     }
 }
