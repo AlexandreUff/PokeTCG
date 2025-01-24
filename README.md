@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# PokeTCG
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido por Alexandre Magno Dias.
 
-Currently, two official plugins are available:
+### Sobre o PokeTCG
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O PokeRub é um site que permite buscar e visualizar dados de um pokemon.
 
-## Expanding the ESLint configuration
+<div style="display: flex;">
+  <img src="https://i.ibb.co/cJCPpFs/Poke-TCG-IMG.png" width="500px" height="500px"/>
+</div>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Tecnologias Utilizadas
 
-- Configure the top-level `parserOptions` property like this:
+- Vite;
+- Typescript;
+- React.js;
+- SASS/SCSS;
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Como acessar o PokeTCG?
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Vá em seu navegador de preferência, seja no seu dispositivo móvel ou desktop (área de trabalho);
+2. Acesse o link https://poke-tcg-probrain.vercel.app/.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Como usar o PokeRub
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Logo quando a tela é iniciada, é exibido uma barra de pesquisa no topo da tela com um botão de execução e abaixo uma lista dos 20 primeiros cards de pokemons de um total de mais de 18000;
+- Você pode clicar em um dos itens dessa lista e, ao clicar, serão exibidos os dados como nome, tipo, fraquezas e habilidade em um modal junto a uma representação gráfica do mesmo numa escala maior;
+- Você pode procurar manualmente os pokemons através dessa lista. Caso o que deseja não esteja entre os 20 primeiros, clique no botão com o ícone "Próximo >" para exibir os próximos 20;
+- Este processo do item anterior pode ser repetido até encontrar o pokemon desejado. Caso deseje regressar a parte anterior da lista, basta clicar no botão com o ícone "< Anterior" para retornar aos 20 anteriores;
+- Por ser um processo de busca muito oneroso esses dos dois itens anteriores, você pode digitar um nome de um pokemon desejado clicando na barra de pesquisa superior e, ao terminar de digitar, clicar no ícone de lupa para executar uma busca;
+- O card do pokemon com seus dados conforme o tópico 2 serão exbidos;
+- Você pode também restringir os resultados da pesquisa clicando no botão de Filtro que fica à direita da caixa de pesquisa;
+- Ao clicar, será aberto um modal com os mais variádos filtros disponíveis e suas opções;
+- Cada item de filtro poderá ser marcado conforme sua preferência e, depois, para executar a pesquisa, clique no botão "Concluído" ao final do modal de filtro;
+- Uma lista de cards com os filtros de sua preferência exibirão os resultados de sua escolha. Lembrando que por ser uma filtragem, poderá ser que não haja(m) resultado(s) correspondente(s) à sua preferência.
+
+### Features futuras
+
+- Exibir mais informações a respeito do pokemon escolhido no Modal ao clicar num card;
+- Ao digitar um nome na caixa de pesquisa, ser possível executá-la pressionando a tecla enter;
+
+### informações sobre a aplicação segundo LightHouse do Google Chrome
+
+#### Desktop:
+
+- 93 de Performance;
+- 92 de Acessibilidade;
+- 100 de Melhores Práticas;
+- 91 de SEO.
+
+#### Mobile:
+
+- 81 de Performance;
+- 92 de Acessibilidade;
+- 100 de Melhores Práticas;
+- 91 de SEO.
+
+- ### Contato
+
+  [LinkedIn de Alexandre Magno](https://www.linkedin.com/in/alexandre-desenvolvedordesistemas/)
+
+- ### Página Oficial
+
+  [Alexandre Magno - Apresentação](https://alexandre-magno-apresentacao.netlify.app/)
+
+- ### GitHub
+  [GitHub de Alexandre Magno](https://github.com/AlexandreUff)
